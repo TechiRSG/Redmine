@@ -1,0 +1,13 @@
+---
+- hosts: master
+vars:
+workspace: "{{ WORKSPACE}}"
+- name: Create a Deployment by reading the definition from a local file
+kubernetes.core.k8s:
+  state: present
+  src: /{{ workspace}}/redmine-deployment.yml
+
+- name: Create a Deployment by reading the definition from a local file
+kubernetes.core.k8s:
+  state: present
+  src: /{{ workspace}}/redmine-service.yml
