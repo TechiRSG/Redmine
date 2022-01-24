@@ -1,13 +1,16 @@
 ---
-- hosts: master
-vars:
-workspace: "{{ WORKSPACE}}"
-- name: Create a Deployment by reading the definition from a local file
-kubernetes.core.k8s:
-  state: present
-  src: /{{ workspace}}/redmine-deployment.yml
-
-- name: Create a Deployment by reading the definition from a local file
-kubernetes.core.k8s:
-  state: present
-  src: /{{ workspace}}/redmine-service.yml
+- hosts: kubernetes-master-nodes
+  tasks:
+  - name: copy file from local host to remote host (relative path, ./files/)
+    copy:
+     src: /opt/ans-dep/App_Deployment
+     dest: /tmp
+  - name:
+    shell: |
+          cd /tmp/App_Deployment/
+          kubectl apply -f redmine-deployment.yml
+          sleep 10s
+          kubectl apply -f redmine-service.yml
+          sleep 10s
+          rm -r /tmp/App_Deployment
+          

@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: apps/v2
 kind: Deployment
 metadata:
   name: redmine-deployment
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: redmine
-        image: redmine:latest
+        image: 1636519/redminer:v2
         ports:
         - containerPort: 3000
 
