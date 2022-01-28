@@ -5,7 +5,7 @@ metadata:
   labels:
     app: redmine-dev
 spec:
-  replicas: 2
+  replicas: 6
   selector:
     matchLabels:
       app: redmine-dev
