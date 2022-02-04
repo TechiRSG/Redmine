@@ -5,7 +5,7 @@ metadata:
   labels:
     app: redmine-dev
 spec:
-  replicas: 6
+  replicas: 4
   selector:
     matchLabels:
       app: redmine-dev
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: redmine
-        image: 1636519/redminer:v2
+        image: vensur:redmin:latest
         ports:
         - containerPort: 3000
 
