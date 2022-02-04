@@ -3,14 +3,14 @@
   tasks:
   - name: copy file from local host to remote host (relative path, ./files/)
     copy:
-     src: /opt/ans-dep/App_Deployment
+     src: /opt/ans-dep/CD_Redmine
      dest: /tmp
   - name:
     shell: |
-          cd /tmp/App_Deployment/
+          cd /tmp/CD_Redmine/
           kubectl apply -f redmine-deployment.yml
           sleep 10s
           kubectl apply -f redmine-service.yml
           sleep 10s
-          rm -r /tmp/App_Deployment
+          rm -r /tmp/CD_Redmine
           
